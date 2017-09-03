@@ -293,6 +293,9 @@ aside#lateral h2{
 	color: #ffffff;
 	padding: 5px;
 }
+video#filme-2{
+	width: 350px;
+}
 /*configurando o rodape*/
 footer#rodape{
 	/*no caso do rodape ele deve ficar fora da divisao entre o section e aside, usadno clear both*/
