@@ -2,6 +2,7 @@
 <html lang="pt-br">
     <head>
         <script language="javascript" src="_javascript/funcoes.js" type="text/javascript"></script>
+        <script language="javascript" src="_javascript/formulario.js" type="text/javascript"></script>
         <meta charset="utf-8">
         <title>Tudo Sobre Google Glass</title>
         <link rel="stylesheet" type="text/css" href="_css/estilo.css"/>
@@ -36,33 +37,34 @@
                             <h3 class="data-direita">Atualizado em 28/Agosto/2017</h3>
                         </hgroup>
                     </header>
-                    <!-- criando um formulário o método de envio por post(lento e mais seguro) get(rapido e menos seguro)-->
-                    <form method="post" id="fContato" action="mailto:leocaliban@gmail.com">
+                    <!-- criando um formulário o método de envio por post(lento e mais seguro) get(rapido e menos seguro)
+                    'oninput' quando receber alguma entrada ele vai chamar a função do javascript-->
+                    <form method="post" id="fContato" action="mailto:leocaliban@gmail.com" oninput="calcularTotal();">
                         <!-- criando um conjunto de campos -->
                         <fieldset id="usuario">
                             <!-- legenda do campo -->
                             <legend>Identificação do Usuário</legend>
                             <!-- criando um campo de texto o size é o tamanho do espaço, maxlenght é a quantidade
                             de letras que serão aceitas no espaço, placeholder é a dica que ficará no espaço vazio-->
-                            <p><label for="cNome">Nome:</label><input type="text" name="tNome" id="cNome" size="20" maxlength="30" placeholder="Nome Completo" /></p>
-                            <p><label for="cSenha">Senha:</label><input type="password" name="tSenha" id="cSenha" size="8" maxlength="8" placeholder="8 Dígitos"> </p>
-                            <p><label for="cEmail">E-mail:</label><input type="email" name="tEmail" id="cEmail" size="20" maxlength="40" placeholder="E-mail"> </p>
+                            <p><label for="cNome">Nome:</label><input type="text" name="tNome" id="cNome" size="20" maxlength="30" placeholder="Nome Completo"/></p>
+                            <p><label for="cSenha">Senha:</label><input type="password" name="tSenha" id="cSenha" size="8" maxlength="8" placeholder="8 Dígitos"/> </p>
+                            <p><label for="cEmail">E-mail:</label><input type="email" name="tEmail" id="cEmail" size="20" maxlength="40" placeholder="E-mail"/> </p>
                             <fieldset id="sexo"><legend>Sexo:</legend>
                                 <!-- criando 'radio' buttons para a seleção do sexo, eles devem ter o mesmo nome para não permitir a escolha
                                 dos dois ao mesmo tempo, usamos tambem o 'label', que coloca os nomes em um label que referencia através do 'for'
                                 aos seus botões para quando selecionar apenas o nome o botão será selecionado também-->
-                                <input type="radio" name="tSexo" id="cMasc" checked> <label for="cMasc">Masculino</label><br/>
-                                <input type="radio" name="tSexo" id="cFem"> <label for="cFem">Feminino</label>
+                                <input type="radio" name="tSexo" id="cMasc" checked/> <label for="cMasc">Masculino</label><br/>
+                                <input type="radio" name="tSexo" id="cFem"/> <label for="cFem">Feminino</label>
                             </fieldset>    
-                            <p>Data de Nascimento:<input type="date" name="tData" id="cData"> </p>
+                            <p>Data de Nascimento:<input type="date" name="tData" id="cData"/> </p>
                         </fieldset>
 
                         <fieldset id="endereco">
                             <legend>Endereço do Usuário</legend>
-                            <p><label for="cRua">Logradouro:</label><input type="text" name="tRua" id="cRua" size="40" maxlength="60" placeholder="Rua, Avenida..."></p>
-                            <p><label for="cNumero">Número:</label><input type="number" name="tNumero" id="cNumero" max="9999" min="1" placeholder="Número"> </p>
-                            <p><label for="cBairro">Bairro:</label><input type="text" name="tBairro" id="cBairro" size="30" maxlength="50" placeholder="Seu Bairro"></p>
-                            <p><label for="cCidade">Cidade:</label><input type="text" name="tCidade" id="cCidade" size="30" maxlength="50" placeholder="Sua Cidade" list="cidades"></p>
+                            <p><label for="cRua">Logradouro:</label><input type="text" name="tRua" id="cRua" size="27" maxlength="60" placeholder="Rua, Avenida..."/></p>
+                            <p><label for="cNumero">Número:</label><input type="number" name="tNumero" id="cNumero" max="9999" min="1" placeholder="Número"/> </p>
+                            <p><label for="cBairro">Bairro:</label><input type="text" name="tBairro" id="cBairro" size="30" maxlength="50" placeholder="Seu Bairro"/></p>
+                            <p><label for="cCidade">Cidade:</label><input type="text" name="tCidade" id="cCidade" size="30" maxlength="50" placeholder="Sua Cidade" list="cidades"/></p>
                             <!-- uma lista de dados pré definidos para o preenchimento da escolha da cidade-->
                             <datalist id="cidades" >
                                 <option value="Rio De Janeiro"></option>
@@ -126,24 +128,37 @@
                             <legend>Mensagem do Usuário</legend>
                             <p><label for="cUrgencia">Grau de Urgência:</label>
                                 <!-- no grau de urgencia o 'range' vai ser um controlador visual-->
-                                Min<input type="range" name="tUrgencia" id="cUrgencia" min="0" max="10" step="0.5">Max
+                                Min<input type="range" name="tUrgencia" id="cUrgencia" min="0" max="10" step="0.5"/>Max
                             </p>
                             <p><label for="cMsg">Mensagem:</label>  
                                 <!-- 'textarea' para grandes testos -->
-                                <textarea name="tMsg" id="cMsg" cols="45" rows="5" placeholder="Deixe Aqui A Sua Mensagem..."></textarea>
+                                <textarea name="tMsg" id="cMsg" cols="35" rows="5" placeholder="Deixe Aqui A Sua Mensagem..."></textarea>
                             </p>
                         </fieldset>
 
                         <fieldset id="pedido">
                             <legend>Quero um Google Glass</legend>
-                            
-                            <p>Gostaria de adquirir um Google Glass quando disponível</p>
-                            <p>Cor:</p>
-                            <p>Quantidade:</p>
-                            <p>Preço Total: R$</p>
+                            <!-- 'checkbox' vem antes do label -->
+                            <p><input type="checkbox" name="tPedir" id="cPedir" checked/>
+                                <label for="cPedir"> Gostaria de adquirir um Google Glass quando disponível </label>
+                            </p>
+                            <!-- seletor de cores com o color -->
+                            <p><label for="cCor"> Cor: </label>
+                                <input type="color" name="tCor" id="cCor" value="#0000ff"/>
+                            </p>
+                            <!-- campo de quantidade com min max e valor inicial 'value'-->
+                            <p><label for="cQtd"> Quantidade: </label>
+                                <input type="number" name="tQtd" id="cQtd" min="0" max="5" value="0"/>
+                            </p>
+                            <!-- campo de preço somente para a leitura e não inserção de dados com 'readonly' -->
+                            <p><label for="cPreco"> Preço Total: R$ </label>
+                                <input type="text" name="tPreco" id="cPreco" placeholder="Total A Pagar" readonly/>
+                            </p>
                         </fieldset>
-
-[BOTÃO ENVIAR]
+                        <!--Botão modelo antigo
+                        <input type="submit" name="enviar">
+                        -->
+                        <input type="image" src="_imagens/botao-enviar.png"/>
                     </form>
                 </article>
             </section>  
