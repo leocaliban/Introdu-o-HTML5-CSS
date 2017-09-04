@@ -36,8 +36,8 @@
                             <h3 class="data-direita">Atualizado em 28/Agosto/2017</h3>
                         </hgroup>
                     </header>
-                    <!-- criando um formulário -->
-                    <form>
+                    <!-- criando um formulário o método de envio por post(lento e mais seguro) get(rapido e menos seguro)-->
+                    <form method="post" id="fContato" action="mailto:leocaliban@gmail.com">
                         <!-- criando um conjunto de campos -->
                         <fieldset id="usuario">
                             <!-- legenda do campo -->
@@ -60,27 +60,87 @@
                         <fieldset id="endereco">
                             <legend>Endereço do Usuário</legend>
                             <p><label for="cRua">Logradouro:</label><input type="text" name="tRua" id="cRua" size="40" maxlength="60" placeholder="Rua, Avenida..."></p>
-                            <p><label for="cNumero">Número:</label><input type="number" name="tNumero" id="cNumero" max="9999" min="1"> </p>
-                            <p><label for="cBairro">Bairro:<input type="text" name="tBairro" id="cBairro" size="30" maxlength="50" placeholder="Bairro"></label></p>
-                            <p><label for="cCidade">Cidade:<input type="text" name="tCidade" id="cCidade" size="30" maxlength="50" placeholder="Cidade"></label></p>
-                            <p><label for="cEstado">Estado:<input type="text" name="tEstado" id="cEstado" size="30" maxlength="50" placeholder="Estado"></label></p>
+                            <p><label for="cNumero">Número:</label><input type="number" name="tNumero" id="cNumero" max="9999" min="1" placeholder="Número"> </p>
+                            <p><label for="cBairro">Bairro:</label><input type="text" name="tBairro" id="cBairro" size="30" maxlength="50" placeholder="Seu Bairro"></p>
+                            <p><label for="cCidade">Cidade:</label><input type="text" name="tCidade" id="cCidade" size="30" maxlength="50" placeholder="Sua Cidade" list="cidades"></p>
+                            <!-- uma lista de dados pré definidos para o preenchimento da escolha da cidade-->
+                            <datalist id="cidades" >
+                                <option value="Rio De Janeiro"></option>
+                                <option value="São Paulo"></option>
+                                <option value="Patos"></option>
+                                <option value="São José Do Bonfim"></option>
+                            </datalist>
+                            <p><label for="cEstado">Estado:</label>
+                                <!-- criando uma caixa de seleção dos estados e com 'optgroup' agrupo as 'option' que serão os
+                                estados em suas regioes-->
+                                <select name="tEstado" id="cEstado">
+
+                                    <optgroup label="Região Sudeste">
+                                        <option>Espírito Santo</option>
+                                        <option>Minas Gerais</option>
+                                        <option>Rio de Janeiro</option>
+                                        <option selected>São Paulo</option>
+                                    </optgroup>
+
+                                    <optgroup label="Região Sul">
+                                        <option>Paraná</option>
+                                        <option>Rio Grande do Sul</option>
+                                        <option>Santa Catarina</option>
+                                    </optgroup>
+
+                                    <optgroup label="Região Centro-Oeste">
+                                        <option>Distrito Federal</option>
+                                        <option>Goiás</option>
+                                        <option>Mato Grosso</option>
+                                        <option>Mato Grosso do Sul</option>
+                                        
+                                    </optgroup>
+                                    
+                                    <optgroup label="Região Nordeste">
+                                        <option>Alagoas</option>
+                                        <option>Bahia</option>
+                                        <option>Ceará</option>
+                                        <option>Maranhão</option>
+                                        <option>Paraíba</option>
+                                        <option>Pernambuco</option>
+                                        <option>Piauí</option>
+                                        <option>Rio Grande do Norte</option>
+                                        <option>Sergipe</option>
+                                    </optgroup>
+                                    
+                                    <optgroup label="Região Norte">
+                                        <option>Acre</option>
+                                        <option>Amapá</option>
+                                        <option>Amazonas</option>
+                                        <option>Pará</option>
+                                        <option>Rondônia</option>
+                                        <option>Roraima</option>
+                                        <option>Tocantins</option>
+                                    </optgroup>                                    
+                                </select>
+                            </p>
                             
                         </fieldset>
 
                         <fieldset id="mensagem">
                             <legend>Mensagem do Usuário</legend>
-                            
-                            Grau de Urgência:
-                            Mensagem:
+                            <p><label for="cUrgencia">Grau de Urgência:</label>
+                                <!-- no grau de urgencia o 'range' vai ser um controlador visual-->
+                                Min<input type="range" name="tUrgencia" id="cUrgencia" min="0" max="10" step="0.5">Max
+                            </p>
+                            <p><label for="cMsg">Mensagem:</label>  
+                                <!-- 'textarea' para grandes testos -->
+                                <textarea name="tMsg" id="cMsg" cols="45" rows="5" placeholder="Deixe Aqui A Sua Mensagem..."></textarea>
+                            </p>
                         </fieldset>
 
                         <fieldset id="pedido">
                             <legend>Quero um Google Glass</legend>
                             
-                            Gostaria de adquirir um Google Glass quando disponível
-                            Cor:
-                            Quantidade:
-                            Preço Total: R$
+                            <p>Gostaria de adquirir um Google Glass quando disponível</p>
+                            <p>Cor:</p>
+                            <p>Quantidade:</p>
+                            <p>Preço Total: R$</p>
                         </fieldset>
 
 [BOTÃO ENVIAR]
